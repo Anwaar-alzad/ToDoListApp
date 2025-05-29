@@ -1,0 +1,17 @@
+# macOS system files
+.DS_Store
+
+# Node / Python / Dotnet / Flutter (add based on what you use)
+node_modules/
+.env
+.vscode/
+*.log
+*.pdf
+*.png
+*.jpg
+*.sqlite
+*.db
+
+# C# / Visual Studio
+bin/
+obj/
