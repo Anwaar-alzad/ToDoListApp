@@ -1,8 +1,88 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model WebApplication1.Models.TaskModule.UserTask
+@{
+  ViewData["Title"] = "Task Manager";
 }
-
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-6">DayPilot 🐣🗒️</h1>
+
+    <div style="display: flex; justify-content: center; align-items: flex-start; gap: 40px; margin-top: 30px; padding: 20px;">
+        <!-- Left: Form -->
+        <form asp-action="Create" method="post" style="flex: 0.5;">
+            <input asp-for="Title" class="form-control mb-2" placeholder="Task title..." />
+            <textarea asp-for="Description" class="form-control mb-2" placeholder="Description..."></textarea>
+            <input asp-for="Deadline" type="date" class="form-control mb-2" />
+
+            <select asp-for="CategoryId" class="form-control mb-2">
+                <option value="">-- Select Category --</option>
+                <option>Work</option>
+                <option>Personal</option>
+                <option>Shopping</option>
+                <option>Study</option>
+            </select>
+
+            <button type="submit" class="btn btn-dark">Add Task</button>
+        </form>
+
+        <!-- Vertical Divider -->
+        <div style="width: 1px; background-color: #ccc; height: 100%;"></div>
+
+        <!-- Right: Table & Dropdown -->
+        <div style="flex: 1;">
+            <!-- Category Dropdown -->
+            <div class="dropdown mb-3 d-flex justify-content-end">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Filter Tasks
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Work</a></li>
+                    <li><a class="dropdown-item" href="#">Personal</a></li>
+                    <li><a class="dropdown-item" href="#">Shopping</a></li>
+                    <li><a class="dropdown-item" href="#">Study</a></li>
+                </ul>
+            </div>
+
+            <!-- Data Table -->
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th><input type="checkbox" /></th>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Deadline</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example row - in practice, loop through tasks -->
+                    @* Replace with a loop like:
+                    @foreach (var task in Model.Tasks) {
+                    *@
+                    <tr>
+                        <td><input type="checkbox" /></td>
+                        <td>1</td>
+                        <td>Example Task</td>
+                        <td>Some details here</td>
+                        <td>2025-06-10</td>
+                        <td>
+                            <button class="btn btn-sm btn-dark me-1">Update</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" /></td>
+                        <td>2</td>
+                        <td>Another Task</td>
+                        <td>Details here</td>
+                        <td>2025-06-15</td>
+                        <td>
+                            <button class="btn btn-sm btn-dark me-1">Update</button>
+                            <button class="btn btn-sm btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                    @* } *@
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
